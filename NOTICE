@@ -1,0 +1,14 @@
+Fussball Turnier Web
+Copyright (c) 2026 Reinhard Wermeling
+
+Dieses Projekt steht unter der MIT-Lizenz (siehe LICENSE). Sie gilt fuer den
+Quellcode, die Dokumentation und das Poster der Startseite
+(assets/turnier-poster.png).
+
+Ausgenommen:
+  assets/logorw96.png   Rw-Logo, Herkunftskennzeichnung des Autors.
+
+Das Logo ist kein Bestandteil der MIT-Lizenz und darf nicht fuer eigene
+Projekte uebernommen werden. Beim Weiterverwenden bitte durch ein eigenes
+Logo ersetzen - die Anwendung laeuft auch ohne, es fehlt dann lediglich die
+Signatur im Kopf des Aushangs.

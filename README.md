@@ -131,4 +131,4 @@ Ehrlich gesagt fehlt noch einiges:
 
 Die MIT-Lizenz gilt für den Quellcode, die Dokumentation und das Poster der Startseite.
 
-**Eine Ausnahme:** `assets/logorw96.png` — das Rw-Logo ist eine Herkunftskennzeichnung des Autors und nicht Teil der Lizenz. Beim Weiterverwenden bitte durch ein eigenes Logo ersetzen; die Anwendung läuft auch ohne, es fehlt dann nur die Signatur im Kopf des Aushangs.
+**Eine Ausnahme** (siehe [NOTICE](NOTICE)): `assets/logorw96.png` — das Rw-Logo ist eine Herkunftskennzeichnung des Autors und nicht Teil der Lizenz. Beim Weiterverwenden bitte durch ein eigenes Logo ersetzen; die Anwendung läuft auch ohne, es fehlt dann nur die Signatur im Kopf des Aushangs.
