@@ -99,3 +99,24 @@
   text-align: center;
   color: var(--color-muted);
 }
+
+/* ---------- Handy ----------
+   Tippziele auf die empfohlenen 44px bringen. */
+
+@media (max-width: 768px) {
+  .main-nav {
+    gap: 6px;
+  }
+
+  .main-nav a {
+    padding: 13px 16px;
+  }
+
+  .link-start {
+    padding: 8px 0;
+  }
+
+  .page-content {
+    padding: 18px 14px 32px;
+  }
+}

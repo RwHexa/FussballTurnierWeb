@@ -243,3 +243,29 @@
 .form-editing-hint.is-visible {
   display: block;
 }
+
+/* ---------- Handy ---------- */
+
+@media (max-width: 768px) {
+  .btn-small {
+    padding: 11px 12px;
+    min-height: 44px;
+  }
+
+  .spiel-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .spiele-tabelle th,
+  .spiele-tabelle td {
+    padding: 8px 4px;
+  }
+
+  .spiele-form__actions .btn-primary,
+  .spiele-form__actions .btn-ghost {
+    flex: 1 1 100%;
+    min-height: 44px;
+  }
+}

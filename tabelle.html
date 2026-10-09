@@ -4,6 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tabelle – Fussball Turnier</title>
+  <meta name="theme-color" content="#e85a2a">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/global.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/tabelle.css">
@@ -37,15 +41,15 @@
           <table id="tabelle" class="tabelle">
             <thead>
               <tr>
-                <th class="col-platz">Platz</th>
+                <th class="col-platz"><span class="th-lang">Platz</span><span class="th-kurz">Pl.</span></th>
                 <th class="col-mannschaft">Mannschaft</th>
-                <th>Spiele</th>
-                <th>Siege</th>
-                <th>Unentsch.</th>
-                <th>Niederl.</th>
-                <th>Tore</th>
-                <th>Torverhältnis</th>
-                <th class="col-punkte">Punkte</th>
+                <th class="col-sp"><span class="th-lang">Spiele</span><span class="th-kurz" title="Spiele">Sp</span></th>
+                <th class="col-s"><span class="th-lang">Siege</span><span class="th-kurz" title="Siege">S</span></th>
+                <th class="col-u"><span class="th-lang">Unentsch.</span><span class="th-kurz" title="Unentschieden">U</span></th>
+                <th class="col-n"><span class="th-lang">Niederl.</span><span class="th-kurz" title="Niederlagen">N</span></th>
+                <th class="col-tore">Tore</th>
+                <th class="col-diff"><abbr title="Tordifferenz">Diff</abbr></th>
+                <th class="col-punkte"><span class="th-lang">Punkte</span><span class="th-kurz" title="Punkte">Pkt</span></th>
               </tr>
             </thead>
             <tbody id="tabelle-body"></tbody>

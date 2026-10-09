@@ -4,6 +4,8 @@ Turnierverwaltung für Fußball-Turniere, die **vollständig im Browser** läuft
 
 **Keine Installation, kein Server, kein Build-Werkzeug.** Ordner herunterladen, `index.html` öffnen — fertig. Auch vom USB-Stick.
 
+👉 **Direkt ausprobieren: [rwhexa.github.io/FussballTurnierWeb](https://rwhexa.github.io/FussballTurnierWeb/)**
+
 <p align="center">
   <img src="doku-start.png" alt="Startseite mit Poster und Menü" width="300">
 </p>
@@ -34,6 +36,20 @@ Turnierverwaltung für Fußball-Turniere, die **vollständig im Browser** läuft
 
 ---
 
+## Auf dem Handy
+
+Alle Seiten sind für kleine Schirme ausgelegt: Die Tabelle schaltet auf Kurzbezeichner um (Sp / S / U / N / Tore / Diff / Pkt), der Aushang rückt enger zusammen, und auf der Live-Anzeige liegt der Spielstand oben, die Bedienung darunter.
+
+<p align="center">
+  <img src="doku-handy.png" alt="Die Tabelle auf einem Telefon" width="260">
+</p>
+
+Über **Teilen → Zum Home-Bildschirm** lässt sich die Seite als Symbol ablegen; sie startet dann ohne Browserleiste.
+
+> **Wichtig:** Die Daten liegen im `localStorage` — also **pro Gerät und pro Browser**. Das Handy führt sein eigenes Turnier. Wer am Rechner einträgt und auf dem Handy nachsehen will, überträgt den Stand über *Turnier sichern* und *Turnier laden*.
+
+---
+
 ## Bilder
 
 **Live-Anzeige** — so sehen die Zuschauer sie, mit ausgeblendeter Steuerung:
@@ -50,7 +66,9 @@ Turnierverwaltung für Fußball-Turniere, die **vollständig im Browser** läuft
 
 ## Schnellstart
 
-Repository herunterladen (grüner Knopf *Code* → *Download ZIP*), entpacken und `index.html` im Browser öffnen.
+Am schnellsten über die veröffentlichte Fassung: **[rwhexa.github.io/FussballTurnierWeb](https://rwhexa.github.io/FussballTurnierWeb/)**
+
+Oder lokal: Repository herunterladen (grüner Knopf *Code* → *Download ZIP*), entpacken und `index.html` im Browser öffnen.
 
 Unter *Mannschaften* gibt es einen Knopf **„Demo-Mannschaften laden"** — damit lässt sich alles sofort ausprobieren.
 
@@ -114,7 +132,6 @@ Eine ausführliche technische Beschreibung — Aufbau, Datenmodell, Codeauszüge
 Ehrlich gesagt fehlt noch einiges:
 
 - **Keine Gruppen und keine KO-Runde** — das kann bisher nur die Delphi-Version
-- Die Tabellenseite ist auf schmalen Schirmen zu breit, die Spaltenköpfe werden abgeschnitten
 - Die Sortier-Auswahl auf der Tabellenseite hat nur eine Option
 - Keine Anstoßzeit, kein Spielfeld, keine mitlaufende Spielzeit
 - Die Daten liegen pro Browser — der Austausch zwischen Geräten läuft über die Exportdatei

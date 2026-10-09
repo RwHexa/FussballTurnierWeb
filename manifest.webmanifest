@@ -1,0 +1,16 @@
+{
+  "name": "Fussball Turnier",
+  "short_name": "Turnier",
+  "description": "Turnierverwaltung für Fußball-Turniere: Mannschaften, Spiele, Tabelle, Live-Anzeige und Aushang.",
+  "lang": "de",
+  "start_url": "index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#eceae6",
+  "theme_color": "#e85a2a",
+  "icons": [
+    { "src": "assets/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "assets/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" }
+  ]
+}

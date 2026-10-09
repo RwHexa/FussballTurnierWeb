@@ -197,3 +197,21 @@
   gap: 8px;
   margin-top: 16px;
 }
+
+/* ---------- Handy ---------- */
+
+@media (max-width: 768px) {
+  .btn-icon-delete {
+    padding: 12px 14px;
+    min-height: 44px;
+  }
+
+  .mannschaften-actions-row .btn-secondary {
+    flex: 1 1 100%;
+    min-height: 44px;
+  }
+
+  .mannschaften-toolbar .btn-primary {
+    min-height: 44px;
+  }
+}

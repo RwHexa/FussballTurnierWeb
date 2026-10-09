@@ -259,7 +259,7 @@ Diese Funktion wird von *beiden* Tabellenansichten benutzt — der Seite `tabell
 
 <figure class="schirmbild">
   <img src="doku-tabelle.png" alt="Bildschirmfoto der Tabellenseite mit sechs Mannschaften">
-  <figcaption>Die Tabellenseite. Platz 1 bis 3 sind farblich abgesetzt, darunter läuft ein Zebramuster. Dass „Bor. Darup“ mit nur einem Spiel vor „SW Havixbeck“ steht, ist die Tordifferenz: +5 gegen +1 bei gleichen 3 Punkten. Gut zu sehen ist auch die offene Baustelle aus dem Kapitel „Grenzen“: Die Spaltenköpfe „Unentsch.“ und „Torverhältnis“ werden abgeschnitten, weil diese Seite noch keine Kurzbezeichner hat — der Aushang hat sie bereits.</figcaption>
+  <figcaption>Die Tabellenseite. Platz 1 bis 3 sind farblich abgesetzt, darunter läuft ein Zebramuster. Dass „Bor. Darup“ mit nur einem Spiel vor „SW Havixbeck“ steht, ist die Tordifferenz: +5 gegen +1 bei gleichen 3 Punkten.</figcaption>
 </figure>
 
 ---
@@ -494,6 +494,40 @@ Zwei Dinge sind erwähnenswert, obwohl die Anwendung rein lokal läuft:
 
 ---
 
+## 📱 Auf dem Handy
+
+Die Anwendung ist durchgehend für kleine Schirme ausgelegt. Drei Dinge waren dafür nötig:
+
+**Die Tabelle.** Sie hatte feste Spaltenbreiten von zusammen 320 px — bei 375 px Schirmbreite blieben für die sechs Statistikspalten je **3 Pixel** übrig, die Zahlen lagen übereinander. Jetzt trägt jeder Spaltenkopf beide Beschriftungen, und das Stylesheet entscheidet:
+
+```html
+<th class="col-sp"><span class="th-lang">Spiele</span><span class="th-kurz" title="Spiele">Sp</span></th>
+```
+
+```css
+.th-kurz { display: none; }
+
+@media (max-width: 820px) {
+  .th-lang { display: none; }
+  .th-kurz { display: inline; }
+}
+```
+
+Der Umschaltpunkt liegt bei 820 px und nicht beim Handy: Die Tabelle ist auf 780 px gedeckelt, und unterhalb von rund 780 px Fensterbreite bleiben je Spalte weniger als die nötigen 71 px für „Unentsch." übrig. Die Spalte „Torverhältnis" bekommt die Kurzform dauerhaft — sie bräuchte 92 px, hat aber auch am großen Schirm nur 71.
+
+**Eingabefelder mit 16 px.** Darunter zoomt iOS Safari beim Antippen automatisch hinein und lässt die Seite verschoben zurück. Die Regel braucht `!important`, weil die Seiten-Stylesheets `font: inherit` mit höherer Spezifität setzen.
+
+**Die Live-Anzeige dreht die Reihenfolge um.** Auf dem Telefon schob die Steuerleiste den Spielstand unter den Bildschirmrand. Unter 768 px wird deshalb per `order` getauscht — erst die Anzeige, darunter die Auswahlfelder — und die Tastenliste entfällt, weil ein Telefon keine Tastatur hat.
+
+<figure class="schirmbild schirmbild--hoch">
+  <img src="doku-handy.png" alt="Die Tabelle auf einem Telefon">
+  <figcaption>Dieselbe Tabelle auf 375 Pixeln Breite: Kurzbezeichner, alle sechs Mannschaften vollständig lesbar, kein seitliches Scrollen.</figcaption>
+</figure>
+
+Dazu ein `manifest.webmanifest`, mit dem sich die Seite als Symbol auf den Startbildschirm legen lässt und dann ohne Browserleiste startet.
+
+---
+
 ## ⚠️ Stolpersteine beim Entwickeln
 
 | Stolperstein | Was passiert | Abhilfe |
@@ -502,6 +536,7 @@ Zwei Dinge sind erwähnenswert, obwohl die Anwendung rein lokal läuft:
 | `python -m http.server` | liefert `304 Not Modified`, geänderte CSS bleibt unsichtbar | Adresse mit `?v=2` aufrufen oder hart neu laden |
 | `new Date("2026-07-18")` | gilt als Mitternacht UTC → in manchen Zeitzonen der Vortag | `+ "T12:00:00"` anhängen |
 | `crypto.randomUUID` | fehlt beim Öffnen per `file://` | Rückfallweg mit Zeitstempel |
+| `font: inherit` auf Feldern | die globale 16-px-Regel fürs Handy greift nicht, iOS zoomt beim Tippen hinein | `!important` oder gleiche Spezifität |
 | `display: flex` + `hidden` | das HTML-Attribut `hidden` wirkt nicht mehr, das Element bleibt sichtbar | eigene Regel `.klasse[hidden] { display: none; }` |
 | `escapeHtml()` | steht dreimal identisch in verschiedenen Dateien | noch offen, gehört in eine gemeinsame Datei |
 
@@ -512,7 +547,6 @@ Zwei Dinge sind erwähnenswert, obwohl die Anwendung rein lokal läuft:
 | Thema | Stand |
 |---|---|
 | Gruppen A/B und KO-Runde | fehlt — die Delphi-Version kann es, die Web-Version noch nicht |
-| Tabelle auf schmalen Schirmen | Spaltenköpfe werden abgeschnitten; der Aushang hat die Kurzform schon, die Tabellenseite nicht |
 | Sortier-Auswahl auf `tabelle.html` | hat nur eine Option — ein totes Bedienelement |
 | Anstoßzeit und Spielfeld | nicht vorgesehen |
 | Spieluhr auf „Akt. Spiel" | nur die Tageszeit wird angezeigt; eine mitlaufende Spielzeit mit Halbzeit fehlt |

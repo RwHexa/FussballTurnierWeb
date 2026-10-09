@@ -250,6 +250,50 @@
   text-align: right;
 }
 
+/* ---------- Handy ----------
+   Der 32px-Innenabstand des Blattes ist fuer A4 richtig, auf dem Handy aber
+   zu viel: die Tabelle brauchte 361px bei 311px Platz. */
+
+@media (max-width: 560px) {
+  .aushang-blatt {
+    padding: 18px 12px 14px;
+  }
+
+  .aushang-kopf {
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+
+  .aushang-kopf h2 { font-size: 1.35rem; }
+  .aushang-untertitel { font-size: 0.85rem; }
+  .aushang-kopf__logo { width: 44px; }
+
+  .aushang-tabelle { font-size: 0.78rem; }
+
+  .aushang-tabelle th,
+  .aushang-tabelle td {
+    padding: 6px 2px;
+  }
+
+  .aushang-tabelle .spalte-team { padding-left: 4px; }
+
+  /* Ergebnisse untereinander statt in zwei Spalten */
+  .aushang-ergebnisse {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .aushang-ergebnisse li { font-size: 0.85rem; }
+
+  .aushang-steuerung { padding: 14px; }
+
+  .aushang-aktionen .btn-primary,
+  .aushang-aktionen .btn-secondary {
+    flex: 1 1 100%;
+    min-height: 44px;
+  }
+}
+
 /* ---------- Ausdruck ---------- */
 
 @media print {

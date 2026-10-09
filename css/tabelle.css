@@ -56,6 +56,18 @@
 .col-mannschaft { width: 180px; }
 .col-punkte { width: 80px; }
 
+/* Kurzbezeichner sind nur auf schmalen Schirmen sichtbar */
+.th-kurz { display: none; }
+
+/* "Torverhaeltnis" braucht 92px, die Spalte ist aber immer nur 71px breit
+   (die Tabelle ist auf 780px gedeckelt) - deshalb dort dauerhaft die Kurzform
+   mit Tooltip, wie im Aushang. */
+.tabelle abbr {
+  text-decoration: none;
+  border: none;
+  cursor: help;
+}
+
 .tabelle tbody tr.rank-1 { background: #d3fad3; }
 .tabelle tbody tr.rank-2 { background: #ffffdf; }
 .tabelle tbody tr.rank-3,
@@ -136,4 +148,50 @@
   color: #fff;
   font-size: 16px;
   font-weight: bold;
+}
+
+
+/* ---------- Handy ----------
+   Mit table-layout:fixed und festen Breiten von zusammen 320px blieben fuer
+   die sechs Statistikspalten je 3px uebrig. Darum hier eigene, knappe Breiten
+   und die Kurzbezeichner aus dem Aushang. */
+
+/* Unterhalb von ~780px Fensterbreite bleiben je Statistikspalte weniger als
+   die noetigen 71px uebrig ("Unentsch."), deshalb hier schon auf Kurzform. */
+@media (max-width: 820px) {
+  .th-lang { display: none; }
+  .th-kurz { display: inline; }
+}
+
+@media (max-width: 560px) {
+  .tabelle { font-size: 13px; }
+
+  .tabelle thead th,
+  .tabelle tbody td {
+    padding: 9px 2px;
+  }
+
+  .tabelle tbody td.col-mannschaft {
+    padding-left: 7px;
+    overflow-wrap: anywhere;
+    hyphens: auto;
+  }
+
+  .col-platz { width: 30px; }
+  .col-mannschaft { width: auto; }
+  .col-sp,
+  .col-s,
+  .col-u,
+  .col-n { width: 24px; }
+  .col-tore { width: 46px; }
+  .col-diff { width: 32px; }
+  .col-punkte { width: 32px; }
+
+  .table-wrap { max-height: none; }
+
+  /* Fusszeile untereinander statt nebeneinander */
+  .panel-bottom { gap: 8px; }
+  .sort-label { flex-basis: 100%; }
+  .combo-sortierung { flex: 1; min-width: 0; }
+  .btn-aktualisieren { margin-left: 0; width: 100%; justify-content: center; min-height: 44px; }
 }

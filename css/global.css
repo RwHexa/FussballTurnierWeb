@@ -34,3 +34,18 @@ img {
   height: auto;
   display: block;
 }
+
+/* ---------- Handy ----------
+   Unter 16px zoomt iOS Safari beim Antippen eines Feldes automatisch hinein
+   und laesst die Seite verschoben zurueck. */
+
+@media (max-width: 768px) {
+  input,
+  select,
+  textarea {
+    /* !important ist hier noetig: die Seiten-Stylesheets setzen "font: inherit"
+       mit hoeherer Spezifitaet (z. B. .mannschaften-toolbar input[type="text"])
+       und wuerden diese Regel sonst ueberschreiben. */
+    font-size: 16px !important;
+  }
+}
