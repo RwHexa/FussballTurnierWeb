@@ -1,0 +1,18 @@
+# Eigene Turnierdaten (Export aus der Anwendung)
+turnier-*.json
+
+# Gedruckte Aushaenge
+Aushang*.pdf
+
+# Doppelte Bildschirmfotos (Arbeitskopien; im Repo liegen die doku-*.png)
+Bild*.png
+
+# Reste aus der Delphi-Vorlage
+TabelleBild.png
+TabelleDFM.txt
+TabelleUnit.txt
+TurnierPoster.png
+
+# Zwischendateien
+_vorschau.html
+*_druck.html

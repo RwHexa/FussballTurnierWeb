@@ -1,0 +1,139 @@
+.page-content--tabelle {
+  max-width: 780px;
+}
+
+.tabelle-panel {
+  background: #fff;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+  overflow: hidden;
+  border: 1px solid #ddd;
+}
+
+.table-wrap {
+  overflow: auto;
+  max-height: min(460px, 60vh);
+}
+
+.tabelle {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  font-size: 14px;
+}
+
+.tabelle thead th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: #eaeaea;
+  font-weight: 700;
+  padding: 10px 6px;
+  border: 1px solid #d0d0d0;
+  text-align: center;
+}
+
+.tabelle tbody td {
+  padding: 10px 6px;
+  border: 1px solid #e0e0e0;
+  text-align: center;
+  height: 38px;
+  vertical-align: middle;
+}
+
+.tabelle tbody td.col-mannschaft {
+  text-align: left;
+  padding-left: 14px;
+  font-weight: 700;
+}
+
+.tabelle tbody td.col-platz,
+.tabelle tbody td.col-punkte {
+  font-weight: 700;
+}
+
+.col-platz { width: 60px; }
+.col-mannschaft { width: 180px; }
+.col-punkte { width: 80px; }
+
+.tabelle tbody tr.rank-1 { background: #d3fad3; }
+.tabelle tbody tr.rank-2 { background: #ffffdf; }
+.tabelle tbody tr.rank-3,
+.tabelle tbody tr.rank-4 { background: #fff; }
+.tabelle tbody tr.rank-zebra-even { background: #f9f9f9; }
+.tabelle tbody tr.rank-zebra-odd { background: #fff; }
+
+.tabelle tbody tr.selected {
+  background: #358ae6;
+  color: #fff;
+}
+
+.tabelle tbody tr.selected td {
+  border-color: #2a6fc4;
+  color: #fff;
+}
+
+.tabelle tbody tr { cursor: pointer; }
+.tabelle tbody tr:hover:not(.selected) { filter: brightness(0.97); }
+
+.tabelle-leer {
+  padding: 24px 16px !important;
+  text-align: center;
+  color: var(--color-muted);
+  font-weight: 600;
+}
+
+.panel-bottom {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  min-height: 60px;
+  background: #f5f4f2;
+  border-top: 1px solid #ddd;
+  flex-wrap: wrap;
+}
+
+.sort-label { white-space: nowrap; }
+
+.combo-sortierung {
+  font-family: inherit;
+  font-size: 14px;
+  padding: 4px 8px;
+  min-width: 200px;
+  border: 1px solid #a0a0a0;
+  border-radius: 4px;
+  background: #fff;
+}
+
+.btn-aktualisieren {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  min-height: 36px;
+  font-family: inherit;
+  font-size: 14px;
+  cursor: pointer;
+  background: linear-gradient(180deg, #fff 0%, #e8e8e8 100%);
+  border: 1px solid var(--color-orange);
+  border-radius: 4px;
+}
+
+.btn-aktualisieren:hover {
+  background: linear-gradient(180deg, #fff8f5 0%, #fde8df 100%);
+}
+
+.btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--color-orange);
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+}

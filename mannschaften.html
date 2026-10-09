@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mannschaften – Fussball Turnier</title>
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/mannschaften.css">
+</head>
+<body data-page="mannschaften">
+  <div class="page-shell">
+    <header class="app-header">
+      <div class="app-header__top">
+        <a class="app-header__brand" href="index.html">
+          <span aria-hidden="true">⚽</span>
+          <span>Fussball Turnier</span>
+        </a>
+        <a class="link-start" href="index.html">← Startseite</a>
+      </div>
+      <nav class="main-nav" aria-label="Hauptmenü">
+        <a href="mannschaften.html" data-nav="mannschaften">Mannschaften</a>
+        <a href="spiele.html" data-nav="spiele">Spiele</a>
+        <a href="aktspiel.html" data-nav="aktspiel">Akt. Spiel</a>
+        <a href="tabelle.html" data-nav="tabelle">Tabelle</a>
+        <a href="ergebnisse.html" data-nav="ergebnisse">Ergebnisse</a>
+        <a href="aushang.html" data-nav="aushang">Aushang</a>
+      </nav>
+    </header>
+
+    <main class="page-content">
+      <h1>Mannschaften</h1>
+      <p class="lead">Teilnehmende Teams erfassen – die Anzahl erscheint später in der Tabelle.</p>
+
+      <div class="mannschaften-panel">
+        <p id="mannschaften-message" class="form-message" role="status"></p>
+        <p data-rolle="transfer-message" class="form-message" role="status"></p>
+
+        <form id="form-mannschaft-neu" class="mannschaften-toolbar">
+          <label for="mannschaft-name-neu">
+            Neue Mannschaft
+            <input
+              id="mannschaft-name-neu"
+              type="text"
+              name="name"
+              placeholder="z. B. FC Musterstadt"
+              maxlength="80"
+              autocomplete="off"
+              required
+            >
+          </label>
+          <button type="submit" class="btn-primary">Hinzufügen</button>
+        </form>
+
+        <div class="mannschaften-meta">
+          <p class="mannschaften-count">
+            Anzahl Mannschaften: <span id="mannschaften-anzahl">0</span>
+          </p>
+        </div>
+
+        <p class="mannschaften-hinweis">
+          Namen können nachträglich geändert werden. Statistiken bleiben der Mannschaft erhalten.
+        </p>
+
+        <div id="mannschaften-empty" class="mannschaften-empty" hidden>
+          Noch keine Mannschaften eingetragen. Oben einen Namen hinzufügen.
+        </div>
+
+        <ul id="mannschaften-liste" class="mannschaften-liste" hidden></ul>
+
+        <div class="mannschaften-actions-row">
+          <button type="button" id="btn-demo-laden" class="btn-secondary">
+            Demo-Mannschaften laden (10 Teams)
+          </button>
+          <button type="button" id="btn-alle-loeschen" class="btn-secondary">
+            Alle löschen
+          </button>
+          <button type="button" class="btn-secondary" data-aktion="export">
+            💾 Turnier sichern (.json)
+          </button>
+          <button type="button" class="btn-secondary" data-aktion="import">
+            📂 Turnier laden
+          </button>
+          <input type="file" accept="application/json,.json" data-rolle="import-datei" hidden>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script src="js/turnier-store.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/datentransfer.js"></script>
+  <script src="js/mannschaften.js"></script>
+</body>
+</html>

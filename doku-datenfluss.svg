@@ -1,0 +1,127 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 540" width="920" height="540" font-family="Segoe UI, system-ui, sans-serif">
+  <style>
+    .bg    { fill: #ffffff; }
+    .box   { fill: #ffffff; stroke: #c9c6c1; stroke-width: 1.5; rx: 7; }
+    .box-o { fill: #fdf1ea; stroke: #e85a2a; stroke-width: 2; rx: 8; }
+    .box-d { fill: #2b3a4a; stroke: #22303d; stroke-width: 1.5; rx: 8; }
+    .box-g { fill: #f4f3f1; stroke: #c9c6c1; stroke-width: 1.2; rx: 6; }
+    .box-dash { fill: #ffffff; stroke: #9aa7b4; stroke-width: 1.5; stroke-dasharray: 5 4; rx: 7; }
+    .t      { fill: #1a1a1a; font-size: 12px; }
+    .t-b    { fill: #1a1a1a; font-size: 12px; font-weight: 700; }
+    .t-s    { fill: #5a5a5a; font-size: 10px; }
+    .t-w    { fill: #ffffff; font-size: 12px; font-weight: 700; }
+    .t-ws   { fill: #9fb3c6; font-size: 10px; }
+    .t-o    { fill: #c94a1f; font-size: 11px; font-weight: 700; }
+    .t-code { font-family: Consolas, Menlo, monospace; font-size: 11px; fill: #1a1a1a; }
+    .t-codes{ font-family: Consolas, Menlo, monospace; font-size: 10px; fill: #5a5a5a; }
+    .t-h    { fill: #1a1a1a; font-size: 14px; font-weight: 700; }
+    .pfeil  { stroke: #e85a2a; stroke-width: 2; fill: none; marker-end: url(#spitze); }
+    .pfeil-g{ stroke: #9aa7b4; stroke-width: 1.5; fill: none; marker-end: url(#spitze-g); stroke-dasharray: 5 4; }
+  </style>
+
+  <defs>
+    <marker id="spitze" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#e85a2a"/>
+    </marker>
+    <marker id="spitze-g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#9aa7b4"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="920" height="540"/>
+
+  <text class="t-h" x="20" y="26">Fussball Turnier — Datenfluss</text>
+  <text class="t-s" x="20" y="43">Jede Seite spricht ausschliesslich mit dem Store. Niemand fasst localStorage direkt an.</text>
+
+  <!-- Seiten -->
+  <text class="t-o" x="20" y="72">SEITEN</text>
+
+  <g>
+    <rect class="box" x="20"  y="82" width="118" height="46"/>
+    <text class="t-b"     x="79"  y="101" text-anchor="middle">index</text>
+    <text class="t-codes" x="79"  y="117" text-anchor="middle">start.js</text>
+
+    <rect class="box" x="146" y="82" width="118" height="46"/>
+    <text class="t-b"     x="205" y="101" text-anchor="middle">mannschaften</text>
+    <text class="t-codes" x="205" y="117" text-anchor="middle">+ datentransfer</text>
+
+    <rect class="box" x="272" y="82" width="118" height="46"/>
+    <text class="t-b"     x="331" y="101" text-anchor="middle">spiele</text>
+    <text class="t-codes" x="331" y="117" text-anchor="middle">spiele.js</text>
+
+    <rect class="box-o" x="398" y="82" width="118" height="46"/>
+    <text class="t-b"     x="457" y="101" text-anchor="middle">akt. spiel</text>
+    <text class="t-codes" x="457" y="117" text-anchor="middle">aktspiel.js</text>
+
+    <rect class="box" x="524" y="82" width="118" height="46"/>
+    <text class="t-b"     x="583" y="101" text-anchor="middle">tabelle</text>
+    <text class="t-codes" x="583" y="117" text-anchor="middle">tabelle.js</text>
+
+    <rect class="box" x="650" y="82" width="118" height="46"/>
+    <text class="t-b"     x="709" y="101" text-anchor="middle">ergebnisse</text>
+    <text class="t-codes" x="709" y="117" text-anchor="middle">ergebnisse.js</text>
+
+    <rect class="box" x="776" y="82" width="124" height="46"/>
+    <text class="t-b"     x="838" y="101" text-anchor="middle">aushang</text>
+    <text class="t-codes" x="838" y="117" text-anchor="middle">+ datentransfer</text>
+  </g>
+
+  <!-- Pfeil Seiten -> Store -->
+  <path class="pfeil" d="M 460 132 L 460 168"/>
+  <text class="t-code" x="474" y="146">getMannschaften() · getTabelle() · addSpiel() · setMeta() …</text>
+  <text class="t-codes" x="474" y="161">zurueck: fertig gerechnete Objekte</text>
+
+  <!-- Store -->
+  <rect class="box-o" x="20" y="176" width="880" height="146"/>
+  <text class="t-b" x="36" y="198">js/turnier-store.js — die einzige Datenschicht</text>
+  <text class="t-codes" x="36" y="213">IIFE, haengt genau ein Objekt an window: TurnierStore</text>
+
+  <text class="t-o" x="36" y="240">LESEN</text>
+  <g>
+    <rect class="box-g" x="36"  y="248" width="150" height="40"/>
+    <text class="t-code" x="111" y="266" text-anchor="middle">JSON.parse</text>
+    <text class="t-codes" x="111" y="280" text-anchor="middle">aus localStorage</text>
+
+    <rect class="box-g" x="206" y="248" width="180" height="40"/>
+    <text class="t-code" x="296" y="266" text-anchor="middle">bereinigeSpiele()</text>
+    <text class="t-codes" x="296" y="280" text-anchor="middle">wirft verwaiste Spiele raus</text>
+
+    <rect class="box-g" x="406" y="248" width="270" height="40"/>
+    <text class="t-code" x="541" y="266" text-anchor="middle">aktualisiereStatistikAusSpielen()</text>
+    <text class="t-codes" x="541" y="280" text-anchor="middle">zaehlt Siege, Tore und Punkte neu</text>
+
+    <rect class="box-g" x="696" y="248" width="188" height="40"/>
+    <text class="t-code" x="790" y="266" text-anchor="middle">getTabelle()</text>
+    <text class="t-codes" x="790" y="280" text-anchor="middle">sortiert und vergibt Plaetze</text>
+
+    <path class="pfeil" d="M 188 268 L 202 268"/>
+    <path class="pfeil" d="M 388 268 L 402 268"/>
+    <path class="pfeil" d="M 678 268 L 692 268"/>
+  </g>
+  <text class="t-s" x="36" y="310">SCHREIBEN: dieselbe Kette — erst bereinigen, dann neu rechnen, dann als JSON ablegen.</text>
+
+  <!-- Pfeil Store <-> Speicher -->
+  <path class="pfeil" d="M 400 332 L 400 366"/>
+  <path class="pfeil" d="M 330 366 L 330 332"/>
+  <text class="t-codes" x="414" y="353">JSON.stringify / JSON.parse</text>
+
+  <!-- localStorage -->
+  <rect class="box-d" x="20" y="374" width="660" height="92"/>
+  <text class="t-w"  x="36" y="396">localStorage</text>
+  <text class="t-code" x="112" y="396" fill="#ffd9c9">"ftv-turnier-v1"</text>
+  <text class="t-ws" x="36" y="416" font-family="Consolas, Menlo, monospace">{ version: 2,</text>
+  <text class="t-ws" x="36" y="432" font-family="Consolas, Menlo, monospace">  meta:   { turnierName, ort, datum },</text>
+  <text class="t-ws" x="36" y="448" font-family="Consolas, Menlo, monospace">  teams:  [ { id, name, … } ],   spiele: [ { id, heimId, gastId, toreHeim, toreGast } ] }</text>
+
+  <!-- Fluechtiger Stand -->
+  <rect class="box-dash" x="700" y="374" width="200" height="92"/>
+  <text class="t-b"  x="800" y="398" text-anchor="middle">nicht gespeichert</text>
+  <text class="t-code" x="800" y="418" text-anchor="middle">const stand =</text>
+  <text class="t-code" x="800" y="433" text-anchor="middle">{ heim: 0, gast: 0 }</text>
+  <text class="t-codes" x="800" y="452" text-anchor="middle">lebt nur in aktspiel.js</text>
+
+  <!-- Kernaussage -->
+  <rect class="box" x="20" y="482" width="880" height="42" fill="#fdf1ea" stroke="#e85a2a"/>
+  <text class="t-b" x="36" y="500">Punkte, Siege und Platzierung stehen nirgends in der Datei.</text>
+  <text class="t-s" x="36" y="516">Gespeichert sind nur Mannschaften und Ergebnisse — alles andere entsteht bei jedem Lesen neu und kann deshalb nicht veralten.</text>
+</svg>

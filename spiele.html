@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spiele – Fussball Turnier</title>
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/spiele.css">
+</head>
+<body data-page="spiele">
+  <div class="page-shell">
+    <header class="app-header">
+      <div class="app-header__top">
+        <a class="app-header__brand" href="index.html">
+          <span aria-hidden="true">⚽</span>
+          <span>Fussball Turnier</span>
+        </a>
+        <a class="link-start" href="index.html">← Startseite</a>
+      </div>
+      <nav class="main-nav" aria-label="Hauptmenü">
+        <a href="mannschaften.html" data-nav="mannschaften">Mannschaften</a>
+        <a href="spiele.html" data-nav="spiele">Spiele</a>
+        <a href="aktspiel.html" data-nav="aktspiel">Akt. Spiel</a>
+        <a href="tabelle.html" data-nav="tabelle">Tabelle</a>
+        <a href="ergebnisse.html" data-nav="ergebnisse">Ergebnisse</a>
+        <a href="aushang.html" data-nav="aushang">Aushang</a>
+      </nav>
+    </header>
+
+    <main class="page-content">
+      <h1>Spiele &amp; Ergebnisse</h1>
+      <p class="lead">
+        Begegnungen frei wählen (Heim vs. Gast), Ergebnis eintragen – die Tabelle wird automatisch berechnet.
+      </p>
+
+      <div id="spiele-keine-mannschaften" class="spiele-hinweis-box" hidden>
+        Mindestens <strong>zwei Mannschaften</strong> nötig.
+        <a href="mannschaften.html">Zur Mannschaftsverwaltung</a>
+      </div>
+
+      <div id="spiele-form-panel" class="spiele-panel" hidden>
+        <h2>Neues Spiel / Ergebnis</h2>
+        <p id="spiel-editing-hint" class="form-editing-hint" role="status"></p>
+        <p id="spiele-message" class="form-message" role="status"></p>
+
+        <form id="form-spiel" class="spiele-form">
+          <label for="spiel-heim">
+            Heimmannschaft
+            <select id="spiel-heim" required></select>
+          </label>
+          <label for="spiel-gast">
+            Gastmannschaft
+            <select id="spiel-gast" required></select>
+          </label>
+
+          <div class="spiele-form__ergebnis ergebnis-row">
+            <label for="spiel-tore-heim">
+              Tore Heim
+              <input id="spiel-tore-heim" type="number" min="0" max="99" step="1" required value="0">
+            </label>
+            <span class="ergebnis-separator" aria-hidden="true">:</span>
+            <label for="spiel-tore-gast">
+              Tore Gast
+              <input id="spiel-tore-gast" type="number" min="0" max="99" step="1" required value="0">
+            </label>
+          </div>
+
+          <div class="spiele-form__actions">
+            <button type="submit" id="btn-spiel-speichern" class="btn-primary">
+              Spiel / Ergebnis hinzufügen
+            </button>
+            <button type="button" id="btn-spiel-abbrechen" class="btn-ghost" hidden>
+              Bearbeitung abbrechen
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <section class="spiele-panel">
+        <h2>Eingetragene Spiele</h2>
+        <p class="spiele-meta">Anzahl Spiele: <span id="spiele-anzahl">0</span></p>
+        <div id="spiele-empty" class="spiele-empty" hidden>
+          Noch keine Spiele erfasst.
+        </div>
+        <div class="spiele-liste-wrap">
+          <table class="spiele-tabelle">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Begegnung</th>
+                <th>Ergebnis</th>
+                <th>Aktionen</th>
+              </tr>
+            </thead>
+            <tbody id="spiele-liste-body"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script src="js/turnier-store.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/spiele.js"></script>
+</body>
+</html>

@@ -1,0 +1,405 @@
+/* Große Live-Anzeige für Zuschauer (Beamer / zweiter Bildschirm).
+   Dunkler Hintergrund wie die Fußzeile der Delphi-Version: besser lesbar aus Entfernung. */
+
+:root {
+  --live-bg: #2b3a4a;
+  --live-bg-tief: #22303d;
+  --live-hell: #ffffff;
+  --live-gedaempft: #9fb3c6;
+}
+
+body[data-page="aktspiel"] {
+  background: var(--live-bg);
+  color: var(--live-hell);
+}
+
+.live-shell {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Die Kopfzeile bleibt hell, passt sich aber ein */
+body[data-page="aktspiel"] .app-header {
+  background: linear-gradient(180deg, #fff 0%, #f5f4f2 100%);
+}
+
+/* ---------- Ausblenden ---------- */
+
+body.live-ohne-steuerung .live-verbergbar {
+  display: none !important;
+}
+
+.live-einblenden {
+  position: fixed;
+  right: 14px;
+  bottom: 14px;
+  z-index: 10;
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--live-gedaempft);
+  cursor: pointer;
+  opacity: 0.35;
+  transition: opacity 0.2s, color 0.2s, background 0.2s;
+}
+
+.live-einblenden:hover,
+.live-einblenden:focus-visible {
+  opacity: 1;
+  color: var(--live-hell);
+  background: rgba(255, 255, 255, 0.18);
+}
+
+/* ---------- Steuerung ---------- */
+
+.live-hinweis {
+  margin: 20px auto;
+  max-width: 560px;
+  padding: 14px 18px;
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  text-align: center;
+}
+
+.live-hinweis a {
+  color: var(--color-orange-light);
+  font-weight: 600;
+}
+
+.live-steuerung {
+  background: var(--live-bg-tief);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 16px;
+}
+
+.live-message {
+  margin: 0 0 10px;
+  min-height: 1.2em;
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.live-message.is-ok {
+  color: #9ae6b4;
+}
+
+.live-message.is-error {
+  color: #feb2b2;
+}
+
+.live-steuerung__zeile {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.live-steuerung__zeile--aktionen {
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.live-steuerung__zeile--naechstes {
+  padding-top: 10px;
+  border-top: 1px dashed rgba(255, 255, 255, 0.15);
+}
+
+.live-steuerung__zeile--naechstes select {
+  min-width: 190px;
+  font-size: 0.92rem;
+}
+
+.live-gegen {
+  align-self: flex-end;
+  padding-bottom: 9px;
+  color: var(--live-gedaempft);
+  font-weight: 700;
+}
+
+/* Zweites Feld braucht keine sichtbare Beschriftung, aber die Hoehe der ersten */
+.live-label-leer {
+  visibility: hidden;
+}
+
+.live-steuerung label {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--live-gedaempft);
+}
+
+.live-steuerung select {
+  font: inherit;
+  font-size: 1rem;
+  min-width: 220px;
+  padding: 9px 10px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: #fff;
+  color: var(--color-ink);
+}
+
+.live-btn {
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--live-hell);
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.live-btn:hover {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.live-btn--primary {
+  background: var(--color-orange);
+  border-color: var(--color-orange-dark);
+}
+
+.live-btn--primary:hover {
+  background: var(--color-orange-dark);
+}
+
+.live-btn--ghost {
+  align-self: flex-end;
+  font-size: 1.2rem;
+  padding: 8px 12px;
+  line-height: 1;
+}
+
+.live-tasten {
+  margin: 0;
+  text-align: center;
+  font-size: 0.78rem;
+  color: var(--live-gedaempft);
+}
+
+.live-tasten kbd {
+  display: inline-block;
+  padding: 1px 6px;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.1);
+  font-family: inherit;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--live-hell);
+}
+
+/* ---------- Die Anzeige ---------- */
+
+.live-anzeige {
+  flex: 1;
+  /* Drei Zonen: Uhr oben, Spiel in der Mitte (nimmt den Rest), naechstes Spiel unten */
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  padding: clamp(14px, 2.4vw, 32px);
+  text-align: center;
+}
+
+.live-kopfzeile {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+
+.live-uhr {
+  font-size: clamp(1.1rem, 2.8vw, 2.6rem);
+  font-weight: 700;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+  color: var(--live-gedaempft);
+}
+
+.live-mitte {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(10px, 2vh, 28px);
+  min-height: 0;
+}
+
+/* display:flex wuerde das hidden-Attribut aushebeln */
+.live-fusszeile[hidden] {
+  display: none;
+}
+
+.live-fusszeile {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: center;
+  gap: clamp(8px, 1.4vw, 18px);
+  padding-top: clamp(8px, 1.4vh, 18px);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* Bei ausgeblendeter Steuerung sitzt der Einblenden-Knopf unten rechts —
+   beidseitig Platz lassen, damit die Paarung optisch mittig bleibt. */
+body.live-ohne-steuerung .live-fusszeile {
+  padding-left: 130px;
+  padding-right: 130px;
+}
+
+.live-fusszeile__label {
+  font-size: clamp(0.62rem, 1.2vw, 0.95rem);
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-orange-light);
+}
+
+.live-fusszeile__paarung {
+  font-size: clamp(0.95rem, 2.3vw, 2.1rem);
+  font-weight: 700;
+  color: var(--live-hell);
+  overflow-wrap: anywhere;
+}
+
+.live-label {
+  margin: 0;
+  font-size: clamp(0.7rem, 1.6vw, 1.1rem);
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--color-orange-light);
+}
+
+.live-paarung {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: clamp(12px, 3vw, 48px);
+  width: 100%;
+  max-width: 1600px;
+}
+
+.live-team {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(8px, 1.5vh, 18px);
+  min-width: 0;
+}
+
+.live-team__name {
+  font-size: clamp(1.3rem, 4.2vw, 4.5rem);
+  font-weight: 800;
+  line-height: 1.1;
+  overflow-wrap: anywhere;
+  hyphens: auto;
+}
+
+.live-stand {
+  display: flex;
+  align-items: center;
+  gap: clamp(6px, 1.2vw, 20px);
+  font-size: clamp(3.5rem, 15vw, 15rem);
+  font-weight: 900;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-orange-light);
+  text-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+}
+
+.live-doppelpunkt {
+  color: var(--live-gedaempft);
+  font-size: 0.6em;
+  transform: translateY(-0.08em);
+}
+
+/* Tor-Knöpfe bleiben auch bei ausgeblendeter Steuerung sichtbar,
+   damit der Spielstand jederzeit eingegeben werden kann. */
+.live-tor-knoepfe {
+  display: flex;
+  gap: 8px;
+}
+
+.live-tor {
+  font: inherit;
+  font-size: clamp(1.1rem, 2.4vw, 2rem);
+  font-weight: 700;
+  line-height: 1;
+  width: clamp(2.2em, 5vw, 2.6em);
+  height: clamp(1.5em, 3vw, 1.7em);
+  border-radius: 8px;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--live-hell);
+  opacity: 0.55;
+  transition: opacity 0.15s, background 0.15s, transform 0.08s;
+}
+
+.live-tor:hover,
+.live-tor:focus-visible {
+  opacity: 1;
+  background: var(--color-orange);
+  border-color: var(--color-orange-dark);
+}
+
+.live-tor:active {
+  transform: scale(0.94);
+}
+
+.live-tor--zurueck:hover,
+.live-tor--zurueck:focus-visible {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+/* Kurz aufleuchten, wenn ein Tor fällt */
+@keyframes live-puls {
+  0% { transform: scale(1); }
+  35% { transform: scale(1.12); }
+  100% { transform: scale(1); }
+}
+
+.live-stand.ist-neu {
+  animation: live-puls 0.45s ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .live-stand.ist-neu {
+    animation: none;
+  }
+}
+
+/* Hochkant / schmale Schirme: untereinander statt nebeneinander */
+@media (max-width: 560px) {
+  .live-paarung {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .live-stand {
+    justify-content: center;
+    font-size: clamp(3.5rem, 26vw, 9rem);
+  }
+
+  .live-fusszeile {
+    gap: 4px 12px;
+  }
+}

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aushang – Fussball Turnier</title>
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/aushang.css">
+</head>
+<body data-page="aushang">
+  <div class="page-shell">
+    <header class="app-header no-print">
+      <div class="app-header__top">
+        <a class="app-header__brand" href="index.html">
+          <span aria-hidden="true">⚽</span>
+          <span>Fussball Turnier</span>
+        </a>
+        <a class="link-start" href="index.html">← Startseite</a>
+      </div>
+      <nav class="main-nav" aria-label="Hauptmenü">
+        <a href="mannschaften.html" data-nav="mannschaften">Mannschaften</a>
+        <a href="spiele.html" data-nav="spiele">Spiele</a>
+        <a href="aktspiel.html" data-nav="aktspiel">Akt. Spiel</a>
+        <a href="tabelle.html" data-nav="tabelle">Tabelle</a>
+        <a href="ergebnisse.html" data-nav="ergebnisse">Ergebnisse</a>
+        <a href="aushang.html" data-nav="aushang">Aushang</a>
+      </nav>
+    </header>
+
+    <main class="page-content page-content--aushang">
+      <div class="no-print">
+        <h1>Aushang</h1>
+        <p class="lead">
+          Turnier-Angaben ausfüllen, dann drucken oder als PDF speichern.
+          Die Vorschau unten entspricht dem Ausdruck.
+        </p>
+
+        <section class="aushang-steuerung">
+          <h2>Turnier-Angaben</h2>
+          <p data-rolle="transfer-message" class="form-message" role="status"></p>
+
+          <div class="aushang-felder">
+            <label for="feld-turniername">
+              Turniername
+              <input id="feld-turniername" type="text" maxlength="80" placeholder="z. B. Stadtmeisterschaft">
+            </label>
+            <label for="feld-ort">
+              Ort
+              <input id="feld-ort" type="text" maxlength="80" placeholder="z. B. Sportplatz Musterstadt">
+            </label>
+            <label for="feld-datum">
+              Datum
+              <input id="feld-datum" type="date">
+            </label>
+          </div>
+
+          <div class="aushang-aktionen">
+            <button type="button" id="btn-drucken" class="btn-primary">
+              🖨️ Drucken / als PDF speichern
+            </button>
+            <button type="button" class="btn-secondary" data-aktion="export">
+              💾 Turnier sichern (.json)
+            </button>
+            <button type="button" class="btn-secondary" data-aktion="import">
+              📂 Turnier laden
+            </button>
+            <input type="file" accept="application/json,.json" data-rolle="import-datei" hidden>
+          </div>
+        </section>
+      </div>
+
+      <article id="aushang-blatt" class="aushang-blatt">
+        <header class="aushang-kopf">
+          <div class="aushang-kopf__text">
+            <h2 id="aushang-titel">Fußball-Turnier</h2>
+            <p id="aushang-untertitel" class="aushang-untertitel"></p>
+          </div>
+          <img class="aushang-kopf__logo" src="assets/logorw96.png" alt="" width="64" height="64">
+        </header>
+
+        <section class="aushang-block">
+          <h3>Tabelle</h3>
+          <table class="aushang-tabelle">
+            <thead>
+              <tr>
+                <th class="spalte-platz">Pl.</th>
+                <th class="spalte-team">Mannschaft</th>
+                <th><abbr title="Spiele">Sp</abbr></th>
+                <th><abbr title="Siege">S</abbr></th>
+                <th><abbr title="Unentschieden">U</abbr></th>
+                <th><abbr title="Niederlagen">N</abbr></th>
+                <th>Tore</th>
+                <th><abbr title="Tordifferenz">Diff</abbr></th>
+                <th class="spalte-punkte">Pkt</th>
+              </tr>
+            </thead>
+            <tbody id="aushang-tabelle-body"></tbody>
+          </table>
+          <p id="aushang-tabelle-leer" class="aushang-leer" hidden>
+            Noch keine Mannschaften angelegt.
+          </p>
+        </section>
+
+        <section class="aushang-block">
+          <h3>Ergebnisse</h3>
+          <ol id="aushang-ergebnisse" class="aushang-ergebnisse"></ol>
+          <p id="aushang-ergebnisse-leer" class="aushang-leer" hidden>
+            Noch keine Spiele erfasst.
+          </p>
+        </section>
+
+        <footer class="aushang-fuss">
+          <span id="aushang-stand"></span>
+        </footer>
+      </article>
+    </main>
+  </div>
+  <script src="js/turnier-store.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/datentransfer.js"></script>
+  <script src="js/aushang.js"></script>
+</body>
+</html>

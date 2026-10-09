@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aktuelles Spiel – Fussball Turnier</title>
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/aktspiel.css">
+</head>
+<body data-page="aktspiel">
+  <div class="page-shell live-shell">
+    <header class="app-header live-verbergbar">
+      <div class="app-header__top">
+        <a class="app-header__brand" href="index.html">
+          <span aria-hidden="true">⚽</span>
+          <span>Fussball Turnier</span>
+        </a>
+        <a class="link-start" href="index.html">← Startseite</a>
+      </div>
+      <nav class="main-nav" aria-label="Hauptmenü">
+        <a href="mannschaften.html" data-nav="mannschaften">Mannschaften</a>
+        <a href="spiele.html" data-nav="spiele">Spiele</a>
+        <a href="aktspiel.html" data-nav="aktspiel">Akt. Spiel</a>
+        <a href="tabelle.html" data-nav="tabelle">Tabelle</a>
+        <a href="ergebnisse.html" data-nav="ergebnisse">Ergebnisse</a>
+        <a href="aushang.html" data-nav="aushang">Aushang</a>
+      </nav>
+    </header>
+
+    <div id="live-keine-mannschaften" class="live-hinweis live-verbergbar" hidden>
+      Mindestens <strong>zwei Mannschaften</strong> nötig.
+      <a href="mannschaften.html">Zur Mannschaftsverwaltung</a>
+    </div>
+
+    <!-- Steuerung: Mannschaftsauswahl, ausblendbar -->
+    <section id="live-steuerung" class="live-steuerung live-verbergbar" aria-label="Begegnung wählen">
+      <p id="live-message" class="live-message" role="status"></p>
+
+      <div class="live-steuerung__zeile">
+        <label for="live-heim">
+          Heim
+          <select id="live-heim"></select>
+        </label>
+
+        <button type="button" id="btn-tauschen" class="live-btn live-btn--ghost" title="Heim und Gast tauschen">
+          ⇄
+        </button>
+
+        <label for="live-gast">
+          Gast
+          <select id="live-gast"></select>
+        </label>
+      </div>
+
+      <div class="live-steuerung__zeile live-steuerung__zeile--naechstes">
+        <label for="live-next-heim">
+          Nächstes Spiel
+          <select id="live-next-heim"></select>
+        </label>
+
+        <span class="live-gegen" aria-hidden="true">–</span>
+
+        <label for="live-next-gast">
+          <span class="live-label-leer">Gast</span>
+          <select id="live-next-gast"></select>
+        </label>
+
+        <button type="button" id="btn-next-uebernehmen" class="live-btn live-btn--ghost" title="Nächstes Spiel nach oben holen">
+          ⬆
+        </button>
+        <button type="button" id="btn-next-leeren" class="live-btn live-btn--ghost" title="Nächstes Spiel löschen">
+          ✕
+        </button>
+      </div>
+
+      <div class="live-steuerung__zeile live-steuerung__zeile--aktionen">
+        <button type="button" id="btn-verbergen" class="live-btn live-btn--primary">
+          👁️ Steuerung ausblenden
+        </button>
+        <button type="button" id="btn-vollbild" class="live-btn">
+          ⛶ Vollbild
+        </button>
+        <button type="button" id="btn-zuruecksetzen" class="live-btn">
+          ↺ 0 : 0
+        </button>
+        <button type="button" id="btn-uebernehmen" class="live-btn">
+          ✓ Als Ergebnis übernehmen
+        </button>
+      </div>
+
+      <p class="live-tasten">
+        Tasten:
+        <kbd>1</kbd> Tor Heim · <kbd>2</kbd> Tor Gast ·
+        <kbd>Shift</kbd>+<kbd>1</kbd>/<kbd>2</kbd> zurücknehmen ·
+        <kbd>H</kbd> Steuerung · <kbd>F</kbd> Vollbild · <kbd>N</kbd> nächstes Spiel hochholen
+      </p>
+    </section>
+
+    <!-- Die große Anzeige -->
+    <main class="live-anzeige">
+      <div class="live-kopfzeile">
+        <span class="live-uhr" id="live-uhr" role="timer" aria-label="Uhrzeit">--:--</span>
+      </div>
+
+      <div class="live-mitte">
+      <p class="live-label">Aktuelles Spiel</p>
+
+      <div class="live-paarung">
+        <div class="live-team live-team--heim">
+          <span class="live-team__name" id="live-name-heim">Heim</span>
+          <div class="live-tor-knoepfe">
+            <button type="button" class="live-tor" data-tor="heim" aria-label="Tor für Heim">+</button>
+            <button type="button" class="live-tor live-tor--zurueck" data-zurueck="heim" aria-label="Tor Heim zurücknehmen">−</button>
+          </div>
+        </div>
+
+        <div class="live-stand" aria-live="polite" aria-atomic="true">
+          <span id="live-tore-heim">0</span><span class="live-doppelpunkt">:</span><span id="live-tore-gast">0</span>
+        </div>
+
+        <div class="live-team live-team--gast">
+          <span class="live-team__name" id="live-name-gast">Gast</span>
+          <div class="live-tor-knoepfe">
+            <button type="button" class="live-tor" data-tor="gast" aria-label="Tor für Gast">+</button>
+            <button type="button" class="live-tor live-tor--zurueck" data-zurueck="gast" aria-label="Tor Gast zurücknehmen">−</button>
+          </div>
+        </div>
+      </div>
+      </div>
+
+      <footer class="live-fusszeile" id="live-naechstes" hidden>
+        <span class="live-fusszeile__label">Nächstes Spiel</span>
+        <span class="live-fusszeile__paarung" id="live-naechstes-text"></span>
+      </footer>
+    </main>
+
+    <!-- Nur sichtbar, wenn die Steuerung ausgeblendet ist -->
+    <button type="button" id="btn-einblenden" class="live-einblenden" hidden>
+      ⚙️ Steuerung
+    </button>
+  </div>
+
+  <script src="js/turnier-store.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/aktspiel.js"></script>
+</body>
+</html>

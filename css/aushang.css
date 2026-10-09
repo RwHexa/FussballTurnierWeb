@@ -1,0 +1,302 @@
+/* ---------- Steuerung (nur Bildschirm) ---------- */
+
+.page-content--aushang {
+  max-width: 940px;
+}
+
+.aushang-steuerung {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: var(--radius);
+  padding: 20px;
+  margin-bottom: 28px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.aushang-steuerung h2 {
+  margin: 0 0 16px;
+  font-size: 1.05rem;
+}
+
+.aushang-felder {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.aushang-felder label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-muted);
+}
+
+.aushang-felder input {
+  font: inherit;
+  font-weight: 400;
+  color: var(--color-ink);
+  padding: 9px 10px;
+  border: 1px solid #bbb;
+  border-radius: 6px;
+  background: #fff;
+}
+
+.aushang-felder input:focus {
+  outline: 2px solid var(--color-orange);
+  outline-offset: 1px;
+  border-color: var(--color-orange);
+}
+
+.aushang-aktionen {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.aushang-aktionen .btn-primary,
+.aushang-aktionen .btn-secondary {
+  font: inherit;
+  font-weight: 600;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.aushang-aktionen .btn-primary {
+  background: var(--color-orange);
+  border: 1px solid var(--color-orange-dark);
+  color: #fff;
+}
+
+.aushang-aktionen .btn-primary:hover {
+  background: var(--color-orange-dark);
+}
+
+.aushang-aktionen .btn-secondary {
+  background: #fff;
+  border: 1px solid #ccc;
+  color: var(--color-ink);
+}
+
+.aushang-aktionen .btn-secondary:hover {
+  border-color: var(--color-orange);
+  color: var(--color-orange-dark);
+}
+
+.form-message {
+  margin: 0 0 12px;
+  min-height: 1.2em;
+  font-size: 0.9rem;
+}
+
+.form-message.is-error {
+  padding: 8px 12px;
+  border-radius: 6px;
+  background: #fff0f0;
+  color: #922;
+  border: 1px solid #f0c0c0;
+}
+
+.form-message.is-ok {
+  padding: 8px 12px;
+  border-radius: 6px;
+  background: #f0fff4;
+  color: #276749;
+  border: 1px solid #c6f6d5;
+}
+
+/* ---------- Das Blatt (Bildschirmvorschau = Ausdruck) ---------- */
+
+.aushang-blatt {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: var(--radius);
+  padding: 28px 32px 20px;
+  box-shadow: var(--shadow-soft);
+}
+
+.aushang-kopf {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-bottom: 14px;
+  border-bottom: 3px solid var(--color-orange);
+  margin-bottom: 22px;
+}
+
+.aushang-kopf h2 {
+  margin: 0;
+  font-size: 1.8rem;
+  line-height: 1.15;
+}
+
+.aushang-untertitel {
+  margin: 6px 0 0;
+  color: var(--color-muted);
+  font-size: 1rem;
+}
+
+.aushang-kopf__logo {
+  flex: none;
+  width: 64px;
+  height: auto;
+}
+
+.aushang-block {
+  margin-bottom: 26px;
+}
+
+.aushang-block h3 {
+  margin: 0 0 10px;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-orange-dark);
+}
+
+.aushang-tabelle {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.aushang-tabelle th,
+.aushang-tabelle td {
+  padding: 7px 8px;
+  text-align: center;
+  border-bottom: 1px solid #e3e3e3;
+}
+
+.aushang-tabelle thead th {
+  background: #f3f2f0;
+  border-bottom: 2px solid #ccc;
+  font-size: 0.85rem;
+}
+
+.aushang-tabelle abbr {
+  text-decoration: none;
+  border: none;
+}
+
+.aushang-tabelle .spalte-team {
+  text-align: left;
+  font-weight: 600;
+}
+
+.aushang-tabelle .spalte-platz,
+.aushang-tabelle .spalte-punkte {
+  font-weight: 700;
+}
+
+.aushang-tabelle tbody tr:nth-child(even) {
+  background: #faf9f8;
+}
+
+.aushang-tabelle tbody tr.ist-podest {
+  background: #fff6ef;
+}
+
+.aushang-ergebnisse {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 4px 24px;
+}
+
+.aushang-ergebnisse li {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: baseline;
+  gap: 10px;
+  padding: 5px 0;
+  border-bottom: 1px solid #eee;
+  font-size: 0.95rem;
+}
+
+.ergebnis-heim {
+  text-align: right;
+}
+
+.ergebnis-gast {
+  text-align: left;
+}
+
+.ergebnis-tore {
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.aushang-leer {
+  margin: 0;
+  padding: 14px;
+  border: 1px dashed #ccc;
+  border-radius: 6px;
+  color: var(--color-muted);
+  text-align: center;
+}
+
+.aushang-fuss {
+  border-top: 1px solid #ddd;
+  padding-top: 10px;
+  font-size: 0.8rem;
+  color: var(--color-muted);
+  text-align: right;
+}
+
+/* ---------- Ausdruck ---------- */
+
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 14mm;
+  }
+
+  .no-print,
+  .app-header {
+    display: none !important;
+  }
+
+  body {
+    background: #fff;
+    font-size: 11pt;
+  }
+
+  .page-content--aushang {
+    max-width: none;
+    padding: 0;
+  }
+
+  .aushang-blatt {
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+    padding: 0;
+  }
+
+  .aushang-block {
+    break-inside: avoid;
+  }
+
+  .aushang-tabelle tbody tr,
+  .aushang-ergebnisse li {
+    break-inside: avoid;
+  }
+
+  .aushang-tabelle thead {
+    display: table-header-group;
+  }
+
+  .aushang-tabelle tbody tr:nth-child(even),
+  .aushang-tabelle tbody tr.ist-podest,
+  .aushang-tabelle thead th {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}

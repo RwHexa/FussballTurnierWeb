@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tabelle – Fussball Turnier</title>
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/tabelle.css">
+</head>
+<body data-page="tabelle">
+  <div class="page-shell">
+    <header class="app-header">
+      <div class="app-header__top">
+        <a class="app-header__brand" href="index.html">
+          <span aria-hidden="true">⚽</span>
+          <span>Fussball Turnier</span>
+        </a>
+        <a class="link-start" href="index.html">← Startseite</a>
+      </div>
+      <nav class="main-nav" aria-label="Hauptmenü">
+        <a href="mannschaften.html" data-nav="mannschaften">Mannschaften</a>
+        <a href="spiele.html" data-nav="spiele">Spiele</a>
+        <a href="aktspiel.html" data-nav="aktspiel">Akt. Spiel</a>
+        <a href="tabelle.html" data-nav="tabelle">Tabelle</a>
+        <a href="ergebnisse.html" data-nav="ergebnisse">Ergebnisse</a>
+        <a href="aushang.html" data-nav="aushang">Aushang</a>
+      </nav>
+    </header>
+
+    <main class="page-content page-content--tabelle">
+      <h1>Tabelle</h1>
+      <p class="lead">Aktuelle Ligatabelle des Turniers.</p>
+
+      <div class="tabelle-panel">
+        <div class="table-wrap">
+          <table id="tabelle" class="tabelle">
+            <thead>
+              <tr>
+                <th class="col-platz">Platz</th>
+                <th class="col-mannschaft">Mannschaft</th>
+                <th>Spiele</th>
+                <th>Siege</th>
+                <th>Unentsch.</th>
+                <th>Niederl.</th>
+                <th>Tore</th>
+                <th>Torverhältnis</th>
+                <th class="col-punkte">Punkte</th>
+              </tr>
+            </thead>
+            <tbody id="tabelle-body"></tbody>
+          </table>
+        </div>
+        <footer class="panel-bottom">
+          <label class="sort-label" for="sortierung">Sortierung:</label>
+          <select id="sortierung" class="combo-sortierung">
+            <option value="punkte-desc">nach Punkten (absteigend)</option>
+          </select>
+          <button type="button" id="btn-aktualisieren" class="btn-aktualisieren">
+            <span class="btn-icon" aria-hidden="true">↻</span>
+            Tabelle aktualisieren
+          </button>
+        </footer>
+      </div>
+    </main>
+  </div>
+  <script src="js/turnier-store.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/tabelle.js"></script>
+</body>
+</html>

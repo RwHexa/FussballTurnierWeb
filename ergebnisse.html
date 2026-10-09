@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ergebnisse – Fussball Turnier</title>
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/spiele.css">
+</head>
+<body data-page="ergebnisse">
+  <div class="page-shell">
+    <header class="app-header">
+      <div class="app-header__top">
+        <a class="app-header__brand" href="index.html">
+          <span aria-hidden="true">⚽</span>
+          <span>Fussball Turnier</span>
+        </a>
+        <a class="link-start" href="index.html">← Startseite</a>
+      </div>
+      <nav class="main-nav" aria-label="Hauptmenü">
+        <a href="mannschaften.html" data-nav="mannschaften">Mannschaften</a>
+        <a href="spiele.html" data-nav="spiele">Spiele</a>
+        <a href="aktspiel.html" data-nav="aktspiel">Akt. Spiel</a>
+        <a href="tabelle.html" data-nav="tabelle">Tabelle</a>
+        <a href="ergebnisse.html" data-nav="ergebnisse">Ergebnisse</a>
+        <a href="aushang.html" data-nav="aushang">Aushang</a>
+      </nav>
+    </header>
+
+    <main class="page-content">
+      <h1>Ergebnisse</h1>
+      <p class="lead">
+        Übersicht aller eingetragenen Partien.
+        <a href="spiele.html">Spiele bearbeiten</a>
+      </p>
+
+      <div id="ergebnisse-keine-mannschaften" class="spiele-hinweis-box" hidden>
+        Noch keine Mannschaften angelegt.
+        <a href="mannschaften.html">Mannschaften erfassen</a>
+      </div>
+
+      <div id="ergebnisse-table-wrap" class="spiele-panel" hidden>
+        <p class="spiele-meta">Anzahl Ergebnisse: <span id="ergebnisse-anzahl">0</span></p>
+        <div id="ergebnisse-empty" class="spiele-empty" hidden>
+          Noch keine Ergebnisse – unter „Spiele“ Begegnungen eintragen.
+        </div>
+        <div class="spiele-liste-wrap">
+          <table class="spiele-tabelle">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Heim</th>
+                <th>Ergebnis</th>
+                <th>Gast</th>
+              </tr>
+            </thead>
+            <tbody id="ergebnisse-body"></tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script src="js/turnier-store.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/ergebnisse.js"></script>
+</body>
+</html>
