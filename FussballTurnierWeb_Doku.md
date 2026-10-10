@@ -32,7 +32,7 @@ TabelleFTV/
 ├── index.html  mannschaften.html  spiele.html
 ├── aktspiel.html  tabelle.html  ergebnisse.html  aushang.html
 ├── assets/
-│   ├── turnier-poster.png      Poster der Startseite
+│   ├── turnier-poster.jpg      Poster der Startseite
 │   └── logorw96.png            Signatur im Aushang-Kopf
 ├── css/
 │   ├── global.css              Farbvariablen, Grundschrift, box-sizing
