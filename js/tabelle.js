@@ -66,21 +66,17 @@ function aktualisiereGridInhalt() {
   });
 }
 
-function onAktualisieren() {
-  aktualisiereGridInhalt();
-}
-
 function initTabelle() {
   aktualisiereGridInhalt();
-
-  const btn = document.getElementById("btn-aktualisieren");
-  const sort = document.getElementById("sortierung");
-  if (btn) btn.addEventListener("click", onAktualisieren);
-  if (sort) sort.addEventListener("change", onAktualisieren);
 
   window.addEventListener("turnier:geaendert", aktualisiereGridInhalt);
   window.addEventListener("storage", (e) => {
     if (e.key === "ftv-turnier-v1") aktualisiereGridInhalt();
+  });
+  // Zurueck-Knopf: holt der Browser die Seite aus seinem Rueckwaerts-Cache,
+  // laufen die Skripte nicht neu an - dann stuende hier die Tabelle von vorhin.
+  window.addEventListener("pageshow", (e) => {
+    if (e.persisted) aktualisiereGridInhalt();
   });
 }
 
