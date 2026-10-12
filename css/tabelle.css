@@ -96,6 +96,32 @@
 }
 
 
+/* ---------- Grosse Schirme ----------
+   Ab 1100px Fensterbreite ist Platz vorhanden: breitere Tabelle, groessere
+   Schrift, hoehere Zeilen. Gilt nur fuer diese Seite, weil tabelle.css allein
+   von tabelle.html geladen wird. Handy und Tablet bleiben unberuehrt. */
+
+@media (min-width: 1100px) {
+  .page-content--tabelle { max-width: 1040px; }
+
+  .tabelle { font-size: 17px; }
+
+  .tabelle thead th,
+  .tabelle tbody td { padding: 14px 10px; }
+
+  .tabelle tbody td { height: 48px; }
+
+  .tabelle tbody td.col-mannschaft { padding-left: 20px; }
+
+  .col-platz { width: 80px; }
+  .col-mannschaft { width: 260px; }
+  .col-punkte { width: 100px; }
+
+  /* Mehr Zeilen ohne Rollen: neun Mannschaften passen so vollstaendig hinein. */
+  .table-wrap { max-height: min(680px, 74vh); }
+}
+
+
 /* ---------- Handy ----------
    Mit table-layout:fixed und festen Breiten von zusammen 320px blieben fuer
    die sechs Statistikspalten je 3px uebrig. Darum hier eigene, knappe Breiten
