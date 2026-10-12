@@ -76,6 +76,9 @@
           <button type="button" id="btn-demo-laden" class="btn-secondary">
             Demo-Mannschaften laden (10 Teams)
           </button>
+          <button type="button" id="btn-cl-laden" class="btn-secondary" hidden>
+            🏆 CL-Gruppe laden
+          </button>
           <button type="button" id="btn-alle-loeschen" class="btn-secondary">
             Alle löschen
           </button>
@@ -93,6 +96,8 @@
   <script src="js/turnier-store.js"></script>
   <script src="js/nav.js"></script>
   <script src="js/datentransfer.js"></script>
+  <!-- Reine Datendatei (erzeugt). Fehlt sie, bleibt der Knopf "CL-Gruppe laden" verborgen. -->
+  <script src="daten/cl-gruppe.js"></script>
   <script src="js/mannschaften.js"></script>
 </body>
 </html>

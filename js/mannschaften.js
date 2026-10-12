@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const emptyEl = document.getElementById("mannschaften-empty");
   const messageEl = document.getElementById("mannschaften-message");
   const btnDemo = document.getElementById("btn-demo-laden");
+  const btnCl = document.getElementById("btn-cl-laden");
   const btnAlleLoeschen = document.getElementById("btn-alle-loeschen");
 
   function showMessage(text, type) {
@@ -97,6 +98,38 @@ document.addEventListener("DOMContentLoaded", () => {
     showMessage("Demo-Mannschaften geladen.", "ok");
     render();
   });
+
+  /* Fertige Gruppe aus der mitgelieferten Datendatei daten/cl-gruppe.js.
+     Gedacht fuer fremde Rechner: dort ist der Browserspeicher leer, und ein
+     Klick holt den aktuellen Stand, ohne die Datei herumtragen zu muessen. */
+  if (btnCl) {
+    const gruppe = window.CL_GRUPPE;
+    if (gruppe && Array.isArray(gruppe.teams)) {
+      const name = (gruppe.meta && gruppe.meta.turnierName) || "CL-Gruppe";
+      btnCl.textContent = `🏆 ${name} laden (${gruppe.teams.length} Teams)`;
+      btnCl.hidden = false;
+
+      btnCl.addEventListener("click", () => {
+        if (
+          TurnierStore.getMannschaften().length > 0 &&
+          !confirm(`Der aktuelle Stand wird durch „${name}“ ersetzt. Fortfahren?`)
+        ) {
+          return;
+        }
+        const ergebnis = TurnierStore.importState(gruppe);
+        if (!ergebnis.ok) {
+          showMessage(ergebnis.error, "error");
+          return;
+        }
+        showMessage(
+          `„${name}“ geladen: ${ergebnis.teams.length} Mannschaften, ${ergebnis.spiele.length} Ergebnisse.`,
+          "ok"
+        );
+        render();
+        window.dispatchEvent(new CustomEvent("turnier:geaendert"));
+      });
+    }
+  }
 
   btnAlleLoeschen.addEventListener("click", () => {
     if (TurnierStore.getMannschaften().length === 0) return;

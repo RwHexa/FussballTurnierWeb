@@ -27,7 +27,7 @@ Turnierverwaltung für Fußball-Turniere, die **vollständig im Browser** läuft
 | Seite | Zweck |
 |---|---|
 | `index.html` | Startseite mit Poster und Menü |
-| `mannschaften.html` | Teams verwalten, Demo-Daten, Sichern/Laden |
+| `mannschaften.html` | Teams verwalten, Demo-Daten, fertige Gruppe laden, Sichern/Laden |
 | `spiele.html` | Begegnungen und Ergebnisse |
 | `aktspiel.html` | Live-Anzeige für Zuschauer |
 | `tabelle.html` | Ligatabelle |

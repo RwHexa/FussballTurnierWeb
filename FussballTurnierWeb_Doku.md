@@ -34,6 +34,8 @@ TabelleFTV/
 ├── assets/
 │   ├── turnier-poster.jpg      Poster der Startseite
 │   └── logorw96.png            Signatur im Aushang-Kopf
+├── daten/
+│   └── cl-gruppe.js            fertige Gruppe fuer den Knopf auf „Mannschaften“ (erzeugt)
 ├── css/
 │   ├── global.css              Farbvariablen, Grundschrift, box-sizing
 │   ├── layout.css              Kopfzeile, Navigation, Seitenrahmen
