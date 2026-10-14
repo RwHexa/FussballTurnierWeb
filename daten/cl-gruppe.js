@@ -61,6 +61,30 @@ window.CL_GRUPPE = {
       "toreHeim": 5,
       "toreGast": 0,
       "erstelltAm": "2026-09-10T18:00:00.000Z"
+    },
+    {
+      "id": "05d7bd4b-d8ea-5146-9643-18a6a87f7ff7",
+      "heimId": "388e9bf9-834f-512c-8619-566fdafa1bc7",
+      "gastId": "b936fd6c-1ee7-5af9-9a32-7f72d4f194bb",
+      "toreHeim": 3,
+      "toreGast": 0,
+      "erstelltAm": "2026-10-13T18:00:00.000Z"
+    },
+    {
+      "id": "e5e5eccf-90da-5ce5-ba98-0fb2b30783dd",
+      "heimId": "0d5a0013-ea2f-5aa0-9a0a-9a4a8c7f1d68",
+      "gastId": "cd2ddba7-0c64-502e-9acf-867352c13b5b",
+      "toreHeim": 2,
+      "toreGast": 0,
+      "erstelltAm": "2026-10-13T18:00:00.000Z"
+    },
+    {
+      "id": "524fcd91-8b4a-560f-beeb-6057a1de9767",
+      "heimId": "84277cf6-b041-5121-bc85-18b82fba4514",
+      "gastId": "3beca4b6-8111-5951-9202-c5b665e2e3fd",
+      "toreHeim": 3,
+      "toreGast": 3,
+      "erstelltAm": "2026-10-13T18:00:00.000Z"
     }
   ]
 };
